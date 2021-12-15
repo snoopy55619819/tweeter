@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+
+.navBar {
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  height: 120px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position: absolute; */
+}
+
+.logo {
+  font-family: 'Bungee', cursive;
+  display: flex;
+}
+
+.newTweetNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fa-angle-double-down {
+  color: red;
+}
+
+/* .container {
+  display: flex;
+  position: relative;
+} */
