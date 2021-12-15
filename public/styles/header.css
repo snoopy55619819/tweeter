@@ -1,0 +1,15 @@
+.container {
+  height: 400px;
+  width: 100%;
+  background-color: #803c00;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.yourName {
+  display: flex;
+  justify-content: center;
+}
