@@ -5,6 +5,7 @@
  */
 html {
   box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -13,7 +14,7 @@ html {
 /*
  * Global layout stuff
  */
-
+ 
 body {
   color: #545149;
   background-color: #f4f1ec;
