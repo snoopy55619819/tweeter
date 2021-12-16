@@ -1,0 +1,54 @@
+html {
+  box-sizing: border-box;
+}
+
+.tweet-container {
+  border: 3px solid black;
+  font-size: 85%;
+  margin-bottom: 5%;
+}
+
+#article-tweet-img {
+  width: 10%;
+  background-color: transparent;
+}
+
+.article-tweet.header {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  padding: 2%;
+}
+
+firstName {
+  padding-left: 2%;
+}
+
+userId {
+  display: flex;
+  flex-grow: 5;
+  justify-content: flex-end;
+  padding-right: 3%;
+}
+
+
+.article-tweet.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 2%;
+  padding: 1% 3%;
+  font-size: 70%;
+}
+
+icons {
+  color:midnightblue;
+}
+
+.article-tweet.body {
+  margin: 0 2%;
+  padding: 2%;
+  display: flex;
+  border-bottom: 3px solid black;
+  
+}

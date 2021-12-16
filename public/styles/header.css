@@ -2,7 +2,7 @@ html {
   box-sizing: border-box;
 }
 
-header {
+.main-header {
   height: 400px;
   width: 100%;
   background-color: #803c00;

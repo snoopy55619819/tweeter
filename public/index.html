@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/newTweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/pastTweets.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -33,13 +34,13 @@
       </div>
     </nav>
     
-    <header>
+    <header class='main-header'>
       <div>
         <img src="/images/profile-hex.png"> 
       </div>
       <br>
       <div class='yourName'>
-        <h2>Your Name</h2>
+        <h2>Nikhil Tallapureddy</h2>
       </div>
     </header>
     
@@ -48,15 +49,36 @@
       <section class="new-tweet">
         <!-- <h2>Compose Tweet</h2> -->
         <form class='form-inline' action="/tweets/" method='post' >
-          <label for="tweet-text"></label>
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea name="text" id="tweet-text" placeholder="start typing your life"></textarea>
           <div class='buttonAndCounter'>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
+
+      <article class="tweet-container">
+        <header class='article-tweet header'>
+          <img id='article-tweet-img' src="/images/profile-hex.png"> 
+          <firstName>Nikhil</firstName>
+          <userId>@userID</userId>
+        </header>
+        <div class='article-tweet body'>
+          If I have seen further it is by standing on the shoulders of giants. Oh how the mighty have fallen this way.
+        </div>
+        <footer class='article-tweet footer'>
+          10 days ago
+          <icons>
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="far fa-heart"></i>
+          </icons>
+        </footer>
+      </article>
+
     </main>
   </body>
-  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  <script type="text/javascript" src="/scripts/past-tweets-scripts.js"></script>
 </html>
