@@ -1,0 +1,38 @@
+html {
+  box-sizing: border-box;
+}
+
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: stretch;
+  margin: 10px 0;
+}
+
+#tweet-text {
+  border: 0;
+  border-bottom: 5px solid black;
+  background-color: transparent;
+  color: black;
+  resize: none;
+}
+
+.buttonAndCounter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+}
+
+button {
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding: 0.5% 1%;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
