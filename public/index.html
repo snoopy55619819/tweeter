@@ -15,14 +15,14 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/newTweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
   </head>
-
+  
   <body>
     <!-- Top nav bar (fixed) -->
     <nav class='navBar'>
@@ -32,18 +32,31 @@
         <i class="fas fa-angle-double-down"></i>
       </div>
     </nav>
-
+    
+    <header>
+      <div>
+        <img src="/images/profile-hex.png"> 
+      </div>
+      <br>
+      <div class='yourName'>
+        <h2>Your Name</h2>
+      </div>
+    </header>
+    
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <header>
-        <div >
-            <img src="/images/profile-hex.png"> 
-        </div>
-        <br>
-        <div class='yourName'>
-            <h2>Your Name</h2>
-        </div>
-      </header>
+      <section class="new-tweet">
+        <!-- <h2>Compose Tweet</h2> -->
+        <form class='form-inline' action="/tweets/" method='post' >
+          <label for="tweet-text"></label>
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <div class='buttonAndCounter'>
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
     </main>
   </body>
+  <script type="text/javascript" src="/scripts/client.js"></script>
 </html>
