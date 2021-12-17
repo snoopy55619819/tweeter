@@ -4,6 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function(tweetObj) {
   const $newTweet = $(`
     <article class="tweet-container">
@@ -14,7 +20,7 @@ const createTweetElement = function(tweetObj) {
       </header>
 
       <div class='article-tweet body'>
-        ${tweetObj.content.text}
+        ${escape(tweetObj.content.text)}
       </div>
 
       <footer class='article-tweet footer'>
@@ -100,6 +106,10 @@ $(document).ready(() => {
       data: $formData,
       success: (body) => {
         //On succesful post, update page using ajax get request
+        console.log($('.counter').val())
+        if($('.counter').val() === 0) {
+          return;
+        }
         loadTweets();
         $('#tweet-text').val("");
         $('.counter').val(140);
