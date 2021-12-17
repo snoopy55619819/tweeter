@@ -20,6 +20,7 @@
     
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <!-- App JS -->
   </head>
@@ -40,7 +41,7 @@
       </div>
       <br>
       <div class='yourName'>
-        <h2>Nikhil Tallapureddy</h2>
+        <h2>Nikhil</h2>
       </div>
     </header>
     
@@ -50,40 +51,42 @@
         <!-- <h2>Compose Tweet</h2> -->
         <form class='form-inline' action="/tweets/" method='post' >
           <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text" placeholder="start typing your life"></textarea>
+          <textarea name="text" id="tweet-text" placeholder="tweet tweet"></textarea>
           <div class='buttonAndCounter'>
             <button type="submit">Tweet</button>
+            <output name='error-message' class='error-message'></output>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
       
       <article id='tweets-container'>
-        <article class="tweet-container">
+
+        <!-- <article class="tweet-container">
           <header class='article-tweet header'>
-            <img id='article-tweet-img' src="/images/profile-hex.png"> 
-            <firstName>Nikhil</firstName>
-            <userId>@userID</userId>
+            <img class='article-tweet-img' src="/images/profile-hex.png"> 
+            <div class='firstName'>Nikhil</div>
+            <div class='userId'>@userID</div>
           </header>
           <div class='article-tweet body'>
             If I have seen further it is by standing on the shoulders of giants. Oh how the mighty have fallen this way.
           </div>
           <footer class='article-tweet footer'>
             10 days ago
-            <icons>
+            <div class='icons'>
               <i class="fas fa-flag"></i>
               <i class="fas fa-retweet"></i>
               <i class="far fa-heart"></i>
-            </icons>
+            </div>
           </footer>
-        </article>
+        </article> -->
 
       </article>
       
     </main>
   </body>
+  <script type="text/javascript" src="/scripts/newTweetHelpers.js"></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  <script type="text/javascript" src="/scripts/past-tweets-scripts.js"></script>
   <script type="text/javascript" src="/scripts/client.js"></script>
   </html>
   

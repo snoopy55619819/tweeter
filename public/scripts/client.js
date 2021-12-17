@@ -5,14 +5,12 @@
  */
 
 const createTweetElement = function(tweetObj) {
-  // console.log(tweetObj);
-
   const $newTweet = $(`
     <article class="tweet-container">
       <header class='article-tweet header'>
-        <img id='article-tweet-img' src="${tweetObj.user.avatars}"> 
-        <firstName>${tweetObj.user.name}</firstName>
-        <userId>${tweetObj.user.handle}</userId>
+        <img class='article-tweet-img' src="${tweetObj.user.avatars}"> 
+        <div class='firstName'>${tweetObj.user.name}</div>
+        <div class='userId'>${tweetObj.user.handle}</div>
       </header>
 
       <div class='article-tweet body'>
@@ -20,12 +18,12 @@ const createTweetElement = function(tweetObj) {
       </div>
 
       <footer class='article-tweet footer'>
-        ${tweetObj.created_at}
-        <icons>
+        ${timeago.format(tweetObj.created_at)}
+        <div class='icons'>
           <i class="fas fa-flag"></i>
           <i class="fas fa-retweet"></i>
           <i class="far fa-heart"></i>
-        </icons>
+        </div>
       </footer>
     </article>
   `);
@@ -33,23 +31,84 @@ const createTweetElement = function(tweetObj) {
 };
 
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
+const renderTweets = function(tweets) {
+  // loops through tweets
+  for (const tweet of tweets) {
+    //create tweet html
+    const $tweet = createTweetElement(tweet);
+    //append to tweets-container html
+    $('#tweets-container').prepend($tweet);
+  }
+  return;
 }
 
-const $tweet = createTweetElement(tweetData);
+// Test / driver code (temporary). Eventually will get this from the server.
+const data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": "https://i.imgur.com/73hZDYK.png"
+      ,
+      "handle": "@SirIsaac"
+    },
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
+  },
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": "https://i.imgur.com/nlhLi3I.png",
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  }
+];
 
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$(document).ready(function() {
-  $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+renderTweets(data)
+
+$(document).ready(() => {
+
+  
+  //AJAX GET request:
+  const loadTweets = function() {
+    
+    $.ajax({
+      type: 'GET',
+      url: '/tweets',
+      success: (pastTweets) => {
+        //After new tweet added successfully, render tweet history with new tweet.
+        // console.log(pastTweets[pastTweets.length - 1])
+        renderTweets([pastTweets[pastTweets.length - 1]]);
+      },
+      dataType: 'JSON'
+    });
+  };
+  // loadTweets()
+  //AJAX POST request:
+  const $button = $('.form-inline');
+
+  $button.submit(function(event) {
+    const $formData = $(this).serialize();
+
+    $.ajax({
+      type: 'POST',
+      url: '/tweets',
+      data: $formData,
+      success: (body) => {
+        //On succesful post, update page using ajax get request
+        loadTweets();
+        $('#tweet-text').val("");
+        $('.counter').val(140);
+      },
+      error: () => {
+        $('.error-message').val('Tweet cannot be empty');
+      },
+      dataType: 'text'
+    });
+    event.preventDefault();
+  });
 });

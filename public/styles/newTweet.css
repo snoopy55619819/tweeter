@@ -26,6 +26,7 @@ html {
   font-family: 'Bungee', cursive;
   padding-top: 3%;
   padding-bottom: 5%;
+  align-items: center;
 }
 
 button {
@@ -45,3 +46,7 @@ button:hover {
   flex-direction: column;
 }
 
+.error-message {
+  font-size: 50%;
+  color:darkred;
+}

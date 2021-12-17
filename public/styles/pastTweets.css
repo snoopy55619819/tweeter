@@ -8,7 +8,11 @@ html {
   margin-bottom: 5%;
 }
 
-#article-tweet-img {
+.tweet-container:hover {
+  box-shadow: 5px 5px #808080;
+}
+
+.article-tweet-img {
   width: 10%;
   background-color: transparent;
 }
@@ -20,11 +24,11 @@ html {
   padding: 2%;
 }
 
-firstName {
+.firstName {
   padding-left: 2%;
 }
 
-userId {
+.userId {
   display: flex;
   flex-grow: 5;
   justify-content: flex-end;
@@ -41,8 +45,21 @@ userId {
   font-size: 70%;
 }
 
-icons {
+.icons {
   color:midnightblue;
+}
+
+.fa-flag:hover {
+  color: #DAA550;
+  text-shadow: 0 0 3px black;
+}
+.fa-retweet:hover {
+  color: #DAA550;
+  text-shadow: 0 0 3px black;
+}
+.fa-heart:hover {
+  color: #DAA550;
+  text-shadow: 0 0 3px black;
 }
 
 .article-tweet.body {
@@ -50,5 +67,4 @@ icons {
   padding: 2%;
   display: flex;
   border-bottom: 3px solid black;
-  
 }
