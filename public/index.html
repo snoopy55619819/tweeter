@@ -3,6 +3,7 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
@@ -39,7 +40,7 @@
       <div>
         <img src="/images/profile-hex.png"> 
       </div>
-      <br>
+      <br id='breakLine'>
       <div class='yourName'>
         <h2>Nikhil</h2>
       </div>
@@ -48,7 +49,6 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <!-- <h2>Compose Tweet</h2> -->
         <form class='form-inline' action="/tweets/" method='post' >
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text" placeholder="tweet tweet"></textarea>
@@ -61,31 +61,11 @@
       </section>
       
       <article id='tweets-container'>
-
-        <!-- <article class="tweet-container">
-          <header class='article-tweet header'>
-            <img class='article-tweet-img' src="/images/profile-hex.png"> 
-            <div class='firstName'>Nikhil</div>
-            <div class='userId'>@userID</div>
-          </header>
-          <div class='article-tweet body'>
-            If I have seen further it is by standing on the shoulders of giants. Oh how the mighty have fallen this way.
-          </div>
-          <footer class='article-tweet footer'>
-            10 days ago
-            <div class='icons'>
-              <i class="fas fa-flag"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="far fa-heart"></i>
-            </div>
-          </footer>
-        </article> -->
-
+        <!-- Past tweets go here -->
       </article>
       
     </main>
   </body>
-  <script type="text/javascript" src="/scripts/newTweetHelpers.js"></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   <script type="text/javascript" src="/scripts/client.js"></script>
   </html>

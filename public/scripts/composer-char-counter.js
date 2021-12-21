@@ -1,4 +1,4 @@
-
+//Update character counter
 $(document).ready(() => {
   const $messageTyped = $('#tweet-text');
   const $counter = $('.counter');

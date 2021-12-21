@@ -4,7 +4,6 @@ html {
 
 .main-header {
   height: 400px;
-  width: 100%;
   background-color: #803c00;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
 
@@ -14,3 +13,10 @@ html {
   align-items: center;
 }
 
+#breakLine {
+  display: none;
+}
+
+.yourName {
+  height: 90px;
+}
