@@ -92,7 +92,7 @@ $(document).ready(() => {
         //On succesful post, update page using ajax get request
 
         //If user reached character limit, tweet not posted. Other scripts in show error messages.
-        if($('.counter').val() === 0) {
+        if($('.counter').val() < 0) {
           return;
         }
         //Else, post tweet
