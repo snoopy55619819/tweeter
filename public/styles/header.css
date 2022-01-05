@@ -13,10 +13,12 @@ html {
   align-items: center;
 }
 
+/* Hide extra space in header between img and name */
 #breakLine {
   display: none;
 }
 
+/* Resize name */
 .yourName {
   height: 90px;
 }
