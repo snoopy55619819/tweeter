@@ -99,6 +99,7 @@ $(document).ready(() => {
         loadTweets();
         $('#tweet-text').val(""); //Set text area to "".
         $('.counter').val(140); //Reset character counter to 140.
+        $('counter').css("color", 'black');
         $('.error-message').val(''); //Remove all error messages.
       },
 
