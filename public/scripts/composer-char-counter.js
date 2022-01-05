@@ -1,9 +1,9 @@
-//Update character counter
+//Update character counter on any input in text form
 $(document).ready(() => {
   const $messageTyped = $('#tweet-text');
   const $counter = $('.counter');
 
-  $messageTyped.on('keyup', (event) => {
+  $messageTyped.on('input', (event) => {
     $('.error-message').val('');
     const currentMessage = event.target.value;
   
