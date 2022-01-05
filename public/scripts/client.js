@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// const db = require("../../server/lib/in-memory-db");
+
 //Escape entered text to avoid intext scripts.
 const escape = function (str) {
   let div = document.createElement("div");
@@ -44,42 +46,24 @@ const renderTweets = function(tweets) {
     const $tweet = createTweetElement(tweet);
     $('#tweets-container').prepend($tweet);
   }
-  return;
 }
 
-//---------------------------
-// Test / driver code (temporary). Eventually will get this from the server.
-//Leaving this here for visual purposes.
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If you want to remove the default tweets: Delete js:50-js:80 in /scripts/client.js file."
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "First two tweets are default tweets being rendered. Can remove them from code if needed."
-    },
-    "created_at": 1461113959088
-  }
-];
-
-renderTweets(data)
-//Test code end
-//---------------------------
-
 $(document).ready(() => {
+  // console.log(pastTweets);
+  const initialLoadTweets = function() {
+    $.ajax({
+      type: 'GET',
+      url: '/tweets',
+      success: (pastTweets) => {
+        //After new tweet added successfully, render tweet history with new tweet.
+        renderTweets(pastTweets);
+      },
+      dataType: 'JSON'
+    });
+  };
+  initialLoadTweets();
+
+
   //AJAX GET request:
   const loadTweets = function() {
     $.ajax({
