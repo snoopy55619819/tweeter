@@ -52,14 +52,9 @@ const renderTweets = function(tweets) {
 const validTweet = function() {
   let tweetLength = $('.counter').val();
 
-  // tweet is empty. Output error essage and return false.
-  if (tweetLength === 140) {
-    $('.error-message').val('Tweet cannot be empty');
-    return false;
-  }
   return (tweetLength >= 0 ? true : false );
-}
-
+  };
+  
 // reset tweet value, counter, counter color and error message for new tweet section
 const resetNewTweetSection = function() {
   $('#tweet-text').val(""); //Set text area to "".
@@ -70,7 +65,7 @@ const resetNewTweetSection = function() {
 
 
 $(document).ready(() => {
-  // console.log(pastTweets);
+
   const initialLoadTweets = function() {
     $.ajax({
       type: 'GET',
@@ -83,7 +78,6 @@ $(document).ready(() => {
     });
   };
   initialLoadTweets();
-
 
   // AJAX GET request:
   const loadTweets = function() {
@@ -115,7 +109,9 @@ $(document).ready(() => {
           loadTweets();
           resetNewTweetSection();
         },
-        error: (err) => { err.message; },
+        error: () => {
+          $('.error-message').val('Tweet cannot be empty');
+        },
         dataType: 'text'
       });
     }
