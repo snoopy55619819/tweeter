@@ -6,14 +6,14 @@
 
 // const db = require("../../server/lib/in-memory-db");
 
-//Escape entered text to avoid intext scripts.
+// Escape entered text to avoid intext scripts.
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-//Create html for past tweet elements.
+// Create html for past tweet elements.
 const createTweetElement = function(tweetObj) {
   const $newTweet = $(`
     <article class="tweet-container">
@@ -40,7 +40,7 @@ const createTweetElement = function(tweetObj) {
   return $newTweet;
 };
 
-//Render tweets onto page.
+// Render tweets onto page.
 const renderTweets = function(tweets) {
   for (const tweet of tweets) {
     const $tweet = createTweetElement(tweet);
@@ -52,7 +52,7 @@ const renderTweets = function(tweets) {
 const validTweet = function() {
   let tweetLength = $('.counter').val();
 
-  //tweet is empty. Output error essage and return false.
+  // tweet is empty. Output error essage and return false.
   if (tweetLength === 140) {
     $('.error-message').val('Tweet cannot be empty');
     return false;
@@ -68,6 +68,7 @@ const resetNewTweetSection = function() {
   $('.error-message').val(''); //Remove all error messages.
 };
 
+
 $(document).ready(() => {
   // console.log(pastTweets);
   const initialLoadTweets = function() {
@@ -75,7 +76,7 @@ $(document).ready(() => {
       type: 'GET',
       url: '/tweets',
       success: (pastTweets) => {
-        //After new tweet added successfully, render tweet history with new tweet.
+        // After new tweet added successfully, render tweet history with new tweet.
         renderTweets(pastTweets);
       },
       dataType: 'JSON'
@@ -84,7 +85,7 @@ $(document).ready(() => {
   initialLoadTweets();
 
 
-  //AJAX GET request:
+  // AJAX GET request:
   const loadTweets = function() {
     $.ajax({
       type: 'GET',
@@ -99,23 +100,21 @@ $(document).ready(() => {
 
   const $button = $('.form-inline');
   
-  //AJAX POST request:
-  //when 'tweet' button is pressed, post the tweet if valid.
+  // AJAX POST request:
+  // when 'tweet' button is pressed, post the tweet if valid.
   $button.submit(function(event) {
     const $formData = $(this).serialize();
 
-    //If valid tweet, then only post the tweet.
+    // If valid tweet, then only post the tweet.
     if(validTweet()) {
       $.ajax({
         type: 'POST',
         url: '/tweets',
         data: $formData,
         success: () => {
-          //Else, post tweet
           loadTweets();
           resetNewTweetSection();
         },
-        
         error: (err) => { err.message; },
         dataType: 'text'
       });
