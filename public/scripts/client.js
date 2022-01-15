@@ -48,12 +48,19 @@ const renderTweets = function(tweets) {
   }
 }
 
+// Validate tweet length
 const validTweet = function() {
   let tweetLength = $('.counter').val();
+
+  //tweet is empty. Output error essage and return false.
+  if (tweetLength === 140) {
+    $('.error-message').val('Tweet cannot be empty');
+    return false;
+  }
   return (tweetLength >= 0 ? true : false );
 }
 
-
+// reset tweet value, counter, counter color and error message for new tweet section
 const resetNewTweetSection = function() {
   $('#tweet-text').val(""); //Set text area to "".
   $('.counter').val(140); //Reset character counter to 140.
@@ -97,7 +104,7 @@ $(document).ready(() => {
   $button.submit(function(event) {
     const $formData = $(this).serialize();
 
-    //If user reached character limit, tweet not posted. Other scripts in show error messages.
+    //If valid tweet, then only post the tweet.
     if(validTweet()) {
       $.ajax({
         type: 'POST',
@@ -109,9 +116,7 @@ $(document).ready(() => {
           resetNewTweetSection();
         },
         
-        error: () => {
-          $('.error-message').val('Tweet cannot be empty');
-        },
+        error: (err) => { err.message; },
         dataType: 'text'
       });
     }
