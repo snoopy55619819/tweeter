@@ -48,6 +48,19 @@ const renderTweets = function(tweets) {
   }
 }
 
+const validTweet = function() {
+  let tweetLength = $('.counter').val();
+  return (tweetLength >= 0 ? true : false );
+}
+
+
+const resetNewTweetSection = function() {
+  $('#tweet-text').val(""); //Set text area to "".
+  $('.counter').val(140); //Reset character counter to 140.
+  $('counter').css("color", 'black');
+  $('.error-message').val(''); //Remove all error messages.
+};
+
 $(document).ready(() => {
   // console.log(pastTweets);
   const initialLoadTweets = function() {
@@ -84,30 +97,24 @@ $(document).ready(() => {
   $button.submit(function(event) {
     const $formData = $(this).serialize();
 
-    $.ajax({
-      type: 'POST',
-      url: '/tweets',
-      data: $formData,
-      success: (body) => {
-        //On succesful post, update page using ajax get request
-
-        //If user reached character limit, tweet not posted. Other scripts in show error messages.
-        if($('.counter').val() < 0) {
-          return;
-        }
-        //Else, post tweet
-        loadTweets();
-        $('#tweet-text').val(""); //Set text area to "".
-        $('.counter').val(140); //Reset character counter to 140.
-        $('counter').css("color", 'black');
-        $('.error-message').val(''); //Remove all error messages.
-      },
-
-      error: () => {
-        $('.error-message').val('Tweet cannot be empty');
-      },
-      dataType: 'text'
-    });
+    //If user reached character limit, tweet not posted. Other scripts in show error messages.
+    if(validTweet()) {
+      $.ajax({
+        type: 'POST',
+        url: '/tweets',
+        data: $formData,
+        success: () => {
+          //Else, post tweet
+          loadTweets();
+          resetNewTweetSection();
+        },
+        
+        error: () => {
+          $('.error-message').val('Tweet cannot be empty');
+        },
+        dataType: 'text'
+      });
+    }
     event.preventDefault();
   });
 });
