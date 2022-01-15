@@ -46,3 +46,7 @@ button:hover {
   font-size: 50%;
   color:darkred;
 }
+
+.article-tweet.body {
+  word-break: break-word;
+}
